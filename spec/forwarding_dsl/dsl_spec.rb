@@ -110,8 +110,8 @@ describe ForwardingDsl::Dsl do
     end
 
     describe 'with no block' do
-      it 'raises exception' do
-        expect{ subject.run target }.to raise_error(ArgumentError)
+      it 'returns the target' do
+        expect(subject.run target).to be target
       end
     end
 

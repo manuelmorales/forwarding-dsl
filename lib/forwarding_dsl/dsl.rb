@@ -4,7 +4,7 @@ module ForwardingDsl
     attr_accessor :that
 
     def self.run target, &block
-      raise ArgumentError.new("Passing a block is mandatory") unless block_given?
+      return target unless block_given?
 
       case block.arity
       when 0 then
