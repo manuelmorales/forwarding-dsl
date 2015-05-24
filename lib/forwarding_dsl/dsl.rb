@@ -4,8 +4,15 @@ module ForwardingDsl
     attr_accessor :that
 
     def self.run target, &block
-      new(target, block.binding.eval('self')).
-        send(:instance_eval, &block)
+      case block.arity
+      when 0 then
+        new(target, block.binding.eval('self')).
+          send(:instance_eval, &block)
+      when 1 then
+        block.call target
+      else
+        raise ArgumentError.new "Wrong number of arguments. Pass 1 or none."
+      end
     end
 
     def initialize this, that
