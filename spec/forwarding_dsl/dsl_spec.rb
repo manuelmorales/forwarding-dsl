@@ -123,5 +123,10 @@ describe ForwardingDsl::Dsl do
         subject.run target, &block
       end
     end
+
+    it 'returns the result of the last line' do
+      expect(target).to receive(:a_method).and_return(:something)
+      expect(subject.run(target){ a_method }).to be :something
+    end
   end
 end
