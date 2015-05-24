@@ -4,10 +4,12 @@ module ForwardingDsl
     attr_accessor :that
 
     def self.run target, &block
+      raise ArgumentError.new("Passing a block is mandatory") unless block_given?
+
       case block.arity
       when 0 then
         new(target, block.binding.eval('self')).
-          send(:instance_eval, &block)
+          send(:instance_exec, &block)
       when 1 then
         block.call target
       else

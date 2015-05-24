@@ -108,5 +108,20 @@ describe ForwardingDsl::Dsl do
         end.to raise_error(ArgumentError)
       end
     end
+
+    describe 'with no block' do
+      it 'raises exception' do
+        expect{ subject.run target }.to raise_error(ArgumentError)
+      end
+    end
+
+    describe 'with a zero arity lambda' do
+      it 'works normally' do
+        expect(target).to receive(:a_method)
+        block = lambda { a_method }
+
+        subject.run target, &block
+      end
+    end
   end
 end
