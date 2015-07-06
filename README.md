@@ -1,5 +1,7 @@
 # ForwardingDsl
 
+[![Gem Version](https://badge.fury.io/rb/forwarding_dsl.svg)](http://badge.fury.io/rb/forwarding_dsl)
+
 ForwardingDsl makes it easy to build user friendly DSLs.
 While `ForwardingDsl.run` will allow you to create a DSL from a regular object,
 `ForwardingDsl::Getsetter` will make easy to declare attributes for it.
