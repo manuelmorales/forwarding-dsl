@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/forwarding_dsl.svg)](http://badge.fury.io/rb/forwarding_dsl)
 [![Code Climate](https://codeclimate.com/github/manuelmorales/forwarding-dsl/badges/gpa.svg)](https://codeclimate.com/github/manuelmorales/forwarding-dsl)
 [![Test Coverage](https://codeclimate.com/github/manuelmorales/forwarding-dsl/badges/coverage.svg)](https://codeclimate.com/github/manuelmorales/forwarding-dsl/coverage)
+[![Build Status](https://travis-ci.org/manuelmorales/forwarding-dsl.svg)](https://travis-ci.org/manuelmorales/forwarding-dsl)
 
 ForwardingDsl makes it easy to build user friendly DSLs.
 While `ForwardingDsl.run` will allow you to create a DSL from a regular object,
