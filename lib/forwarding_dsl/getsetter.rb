@@ -13,7 +13,7 @@ module ForwardingDsl
             if value == NOT_SET
               instance_variable_get "@#{name}"
             else
-              instance_variable_set "@#{name}", value
+              send "#{name}=", value
             end
           end
 
