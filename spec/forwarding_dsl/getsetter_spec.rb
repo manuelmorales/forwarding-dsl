@@ -31,5 +31,15 @@ RSpec.describe ForwardingDsl::Getsetter do
       subject.surname 'Test'
       expect(subject.surname).to eq 'Test'
     end
+
+    it 'allows overriding the name= method' do
+      subject_class.class_eval do
+        getsetter :name
+      end
+
+      expect(subject).to receive(:name=).with 'Test'
+
+      subject.name 'Test'
+    end
   end
 end
