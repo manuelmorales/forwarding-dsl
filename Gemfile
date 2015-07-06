@@ -9,3 +9,8 @@ group :test, :development do
   gem 'rerun'
   gem 'yard'
 end
+
+group :test do
+  gem 'codeclimate-test-reporter'
+end
+
