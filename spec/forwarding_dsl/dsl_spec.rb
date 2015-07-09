@@ -70,6 +70,49 @@ describe ForwardingDsl::Dsl do
           expect(that).to be outer_context
         end
       end
+
+      it 'allows nesting' do
+        stub_const 'Owner', Class.new
+
+        Owner.class_eval do
+          include ForwardingDsl::Getsetter
+          getsetter :name
+        end
+
+        stub_const 'Folder', Class.new
+
+        Folder.class_eval do
+          include ForwardingDsl::Getsetter
+          getsetter :name
+
+          def initialize &block
+            ForwardingDsl.run self, &block
+          end
+
+          def owner &block
+            @owner ||= Owner.new
+            ForwardingDsl.run @owner, &block
+          end
+        end
+
+        folder = Folder.new do
+          name 'Folder name'
+        end
+
+        expect(folder.name).to eq 'Folder name'
+
+
+        folder = Folder.new do
+          name 'Folder name'
+
+          owner do
+            name 'Owner name'
+          end
+        end
+
+        expect(folder.owner.name).to eq 'Owner name'
+        expect(folder.name).to eq 'Folder name'
+      end
     end
 
     describe 'with 1 arg' do
